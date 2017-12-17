@@ -1,8 +1,8 @@
 import * as _ from 'lodash';
 import {InvalidRegionError} from '../errors';
-const config = require('../config/config.json');
-const serviceProxies = config.serviceProxies;
-const regionalProxies = config.regionalProxies;
+const proxies = require('../constants/proxies.json');
+const serviceProxies = proxies.serviceProxies;
+const regionalProxies = proxies.regionalProxies;
 
 export class UrlRetriever {
     public static retrieveServiceUrlByRegionCode(regionCode: string): string {
