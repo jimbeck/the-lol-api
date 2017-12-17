@@ -1,5 +1,7 @@
+import {ChampionMasteryService} from './v3/ChampionMasteryService';
+
 export class LeagueServices {
-    // public championMastery: ChampionMasteryService;
+     public championMastery: ChampionMasteryService;
     // champion mastery
     // champion
     // league
@@ -11,7 +13,7 @@ export class LeagueServices {
     // third-party-code
     // tournament-stub
     // tournament
-    constructor(apiKey: string) {
-        // TODO
+    constructor(apiKey: string, region?: string) {
+        this.championMastery = new ChampionMasteryService(apiKey, region);
     }
 }

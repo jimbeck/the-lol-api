@@ -14,4 +14,4 @@ class UrlRetriever {
     }
 }
 exports.UrlRetriever = UrlRetriever;
-//# sourceMappingURL=UrlRetriever.js.map
+//# sourceMappingURL=UrlBuilder.js.map
