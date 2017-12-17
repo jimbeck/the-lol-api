@@ -1,5 +1,5 @@
-import {NoApiKeyError} from "./errors";
-import {LeagueServices} from "./services/LeagueServices";
+import {NoApiKeyError} from './errors';
+import {LeagueServices} from './services/LeagueServices';
 
 export class LolApi {
     public services: LeagueServices;

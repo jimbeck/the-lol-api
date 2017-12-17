@@ -1,15 +1,12 @@
 import * as _ from 'lodash';
-import {InvalidRegionError} from "../errors";
-let config = require('../config/config.json');
+import {InvalidRegionError} from '../errors';
+const config = require('../config/config.json');
 const serviceProxies = config.serviceProxies;
 const regionalProxies = config.regionalProxies;
 
 export class UrlRetriever {
-    private static URL_PREFIX: String = 'https://';
-    private static URL_SUFFIX: String  = '.api.riotgames.com';
-
     public static retrieveServiceUrlByRegionCode(regionCode: string): string {
-        let platforms = serviceProxies[regionCode.toLowerCase()];
+        const platforms = serviceProxies[regionCode.toLowerCase()];
         if (!platforms) {
             throw new InvalidRegionError();
         }
@@ -18,11 +15,14 @@ export class UrlRetriever {
     }
 
     public static retrieveRegionalServiceUrlByLocation(location: string): string {
-        let index = _.indexOf(regionalProxies, location.toLowerCase());
+        const index = _.indexOf(regionalProxies, location.toLowerCase());
         if (index === -1) {
             throw new InvalidRegionError();
         }
         return this.URL_PREFIX + regionalProxies[index] + this.URL_SUFFIX + '/lol/';
     }
+
+    private static URL_PREFIX: string = 'https://';
+    private static URL_SUFFIX: string  = '.api.riotgames.com';
 
 }
