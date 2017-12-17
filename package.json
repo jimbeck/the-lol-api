@@ -44,6 +44,6 @@
     ]
   },
   "pre-push": [
-    "test"
+    "run": "test"
   ]
 }
