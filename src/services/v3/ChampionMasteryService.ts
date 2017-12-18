@@ -11,7 +11,6 @@ export class ChampionMasteryService extends BaseService {
                 `/lol/champion-mastery/v3/champion-masteries/by-summoner/${summonerId}`,
                 this.apiKey,
                 this.getRegionCode(regionCode));
-
             request(url, (err, response, body) => {
                 if (err) {
                     reject(new Error(err));

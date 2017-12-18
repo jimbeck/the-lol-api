@@ -1,13 +1,18 @@
 {
   "compilerOptions": {
-    "module": "commonjs",
     "target": "es6",
-    "sourceMap": true
-  },
-  "include": [
-    "src/**/*.ts"
-  ],
-  "exclude": [
-    "node_modules"
-  ]
+    "module": "commonjs",
+    "baseUrl": "src",
+    "outDir": "dist",
+    "sourceMap": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "exclude": [
+      "node_modules",
+      "dist"
+    ]
+  }
 }

@@ -1,13 +1,13 @@
 import {NoApiKeyError} from './errors';
-import {LeagueServices} from './services/LeagueServices';
+import {ChampionMasteryService} from './services/v3/ChampionMasteryService';
 
 export class LolApi {
-    public services: LeagueServices;
+    public championMastery: ChampionMasteryService;
 
     constructor(apiKey: string, region?: string) {
         if (!apiKey) {
             throw new NoApiKeyError();
         }
-        this.services = new LeagueServices(apiKey, region);
+        this.championMastery = new ChampionMasteryService(apiKey, region);
     }
 }

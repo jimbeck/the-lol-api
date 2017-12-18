@@ -2,11 +2,13 @@
   "name": "the-lol-api",
   "version": "0.0.1",
   "description": "A wrapper for the league of legends api v3",
-  "main": "index.ts",
+  "main": "src/main.ts",
   "repository": "https://github.com/jimbeck/the-lol-api.git",
   "author": "jimbeck <beckerj03@gmail.com>",
   "license": "MIT",
   "scripts": {
+    "start:dev": "nodemon",
+    "start:debug": "DEBUG=* NODE_OPTS=--debug nodemon",
     "test": "jest",
     "lint": "tslint --project tsconfig.json",
     "prepush": "yarn test"
@@ -17,7 +19,7 @@
     "jest": "^21.2.1",
     "limit": "^0.0.1",
     "lodash": "^4.17.4",
-    "nodemon": "^1.12.1",
+    "nodemon": "^1.13.3",
     "request": "^2.83.0",
     "ts-node": "^3.3.0",
     "typescript": "^2.6.1"
