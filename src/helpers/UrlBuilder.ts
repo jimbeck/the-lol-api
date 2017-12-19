@@ -13,7 +13,7 @@ export class UrlBuilder {
         } else if (type === LeagueUrl.REGION) {
             url += this.retrieveRegionalServiceUrlByLocation(region);
         }
-        return url + '/' + path + `?apiKey=${apiKey}`;
+        return url + '/' + path + `?api_key=${apiKey}`;
     }
 
     private static URL_PREFIX: string = 'https://';

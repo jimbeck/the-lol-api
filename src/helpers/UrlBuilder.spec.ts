@@ -17,7 +17,7 @@ describe('UrlBuilder', () => {
                 'lol',
                 '123',
                 'na'))
-                .toEqual('https://na1.api.riotgames.com/lol?apiKey=123');
+                .toEqual('https://na1.api.riotgames.com/lol?api_key=123');
         });
         it('throws error if invalid location for the regional league service', () => {
             expect(() => UrlBuilder.buildUrl(
@@ -33,7 +33,7 @@ describe('UrlBuilder', () => {
                 'lol',
                 '123',
                 'americas'))
-                .toEqual('https://americas.api.riotgames.com/lol?apiKey=123');
+                .toEqual('https://americas.api.riotgames.com/lol?api_key=123');
         });
     });
 });
