@@ -1,9 +1,12 @@
 import {NoApiKeyError} from './errors';
 import {ChampionMasteryService} from './services/v3/ChampionMasteryService';
-import {ChampionService} from "./services/v3/ChampionService";
-import {LeagueService} from "./services/v3/LeagueService";
-import {StaticDataService} from "./services/v3/StaticDataService";
-import {StatusService} from "./services/v3/StatusService";
+import {ChampionService} from './services/v3/ChampionService';
+import {LeagueService} from './services/v3/LeagueService';
+
+import {SpectactorService} from './services/v3/SpectatorService';
+import {StaticDataService} from './services/v3/StaticDataService';
+import {StatusService} from './services/v3/StatusService';
+import {SummonerService} from './services/v3/SummonerService';
 
 export class LolApi {
     public championMastery: ChampionMasteryService;
@@ -11,6 +14,9 @@ export class LolApi {
     public league: LeagueService;
     public staticData: StaticDataService;
     public status: StatusService;
+
+    public spectactor: SpectactorService;
+    public summoner: SummonerService;
 
     constructor(apiKey: string, region?: string) {
         if (!apiKey) {
@@ -21,5 +27,7 @@ export class LolApi {
         this.league = new LeagueService(apiKey, region);
         this.staticData = new StaticDataService(apiKey, region);
         this.status = new StatusService(apiKey, region);
+        this.spectactor = new SpectactorService(apiKey, region);
+        this.summoner = new SummonerService(apiKey, region);
     }
 }
