@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {ChampionListDto, LeagueListDTO} from '../../domain/index';
+import {LeagueListDTO, LeaguePositionDTO} from '../../domain/index';
 import {LeagueUrl, UrlBuilder} from '../../helpers/UrlBuilder';
 import {BaseService} from './BaseService';
 
@@ -21,7 +21,8 @@ export class LeagueService extends BaseService {
             });
     }
 
-    public getLeagueForSummonerInAllQueues(summonerId: string, regionCode?: string): Promise<Set<ChampionListDto>> {
+    // @deprecated
+    public getLeagueForSummonerInAllQueues(summonerId: string, regionCode?: string): Promise<Set<LeagueListDTO>> {
         const url = UrlBuilder.buildUrl(
             LeagueUrl.SERVICE,
             `lol/league/v3/leagues/by-summoner/${summonerId}`,
@@ -70,10 +71,10 @@ export class LeagueService extends BaseService {
             });
     }
 
-    public getAllLeaguePositionsForSummoner(summonerId: string, regionCode?: string): Promise<LeagueListDTO> {
+    public getAllLeaguePositionsForSummoner(summonerId: string, regionCode?: string): Promise<Set<LeaguePositionDTO>> {
         const url = UrlBuilder.buildUrl(
             LeagueUrl.SERVICE,
-            `lol/league/v3/positions/by-summoner/{summonerId}`,
+            `lol/league/v3/positions/by-summoner/${summonerId}`,
             this.apiKey,
             this.getRegionCode(regionCode));
         return axios
