@@ -1,8 +1,5 @@
 import axios from 'axios';
-import {
-    ChampionListDto, ItemDto, ItemListDto, LanguageStringsDto, MapDataDto, MasteryDto,
-    MasteryListDto, ProfileIconDataDto, RealmDto, RuneDto, RuneListDto, ShardStatus
-} from '../../domain/index';
+import {ShardStatus} from '../../domain/index';
 import {LeagueUrl, UrlBuilder} from '../../helpers/UrlBuilder';
 import {BaseService} from './BaseService';
 

@@ -7,7 +7,9 @@ import {SpectactorService} from './services/v3/SpectatorService';
 import {StaticDataService} from './services/v3/StaticDataService';
 import {StatusService} from './services/v3/StatusService';
 import {SummonerService} from './services/v3/SummonerService';
-import {ThirdPartyService} from "./services/v3/ThirdPartyService";
+import {ThirdPartyService} from './services/v3/ThirdPartyService';
+import {TournamentService} from './services/v3/TournamentService';
+import {TournamentStubService} from './services/v3/TournamentStubService';
 
 export class LolApi {
     public championMastery: ChampionMasteryService;
@@ -18,7 +20,9 @@ export class LolApi {
 
     public spectactor: SpectactorService;
     public summoner: SummonerService;
-    public thirdPartyCode: ThirdPartyService
+    public thirdPartyCode: ThirdPartyService;
+    public tournamentStub: TournamentStubService;
+    public tournament: TournamentService;
 
     constructor(apiKey: string, region?: string) {
         if (!apiKey) {
@@ -32,5 +36,7 @@ export class LolApi {
         this.spectactor = new SpectactorService(apiKey, region);
         this.summoner = new SummonerService(apiKey, region);
         this.thirdPartyCode = new ThirdPartyService(apiKey, region);
+        this.tournamentStub = new TournamentStubService(apiKey, region);
+        this.tournament = new TournamentService(apiKey, region);
     }
 }
