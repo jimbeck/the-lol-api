@@ -10,6 +10,7 @@ import {SummonerService} from './services/v3/SummonerService';
 import {ThirdPartyService} from './services/v3/ThirdPartyService';
 import {TournamentService} from './services/v3/TournamentService';
 import {TournamentStubService} from './services/v3/TournamentStubService';
+import {MatchService} from './services/v3/MatchService';
 
 export class LolApi {
     public championMastery: ChampionMasteryService;
@@ -17,7 +18,7 @@ export class LolApi {
     public league: LeagueService;
     public staticData: StaticDataService;
     public status: StatusService;
-
+    public match: MatchService;
     public spectactor: SpectactorService;
     public summoner: SummonerService;
     public thirdPartyCode: ThirdPartyService;
@@ -33,6 +34,7 @@ export class LolApi {
         this.league = new LeagueService(apiKey, region);
         this.staticData = new StaticDataService(apiKey, region);
         this.status = new StatusService(apiKey, region);
+        this.match = new MatchService(apiKey, region);
         this.spectactor = new SpectactorService(apiKey, region);
         this.summoner = new SummonerService(apiKey, region);
         this.thirdPartyCode = new ThirdPartyService(apiKey, region);
