@@ -21,8 +21,8 @@ export class LolApi {
     public spectactor: SpectactorService;
     public summoner: SummonerService;
     public thirdPartyCode: ThirdPartyService;
-    public tournamentStub: TournamentStubService;
-    public tournament: TournamentService;
+    private tournamentStub: TournamentStubService;
+    private tournament: TournamentService;
 
     constructor(apiKey: string, region?: string) {
         if (!apiKey) {
