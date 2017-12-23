@@ -1,5 +1,4 @@
-import axios from 'axios';
-import {ChampionListDto, ChampionMasteryDTO} from '../../domain/index';
+import {ChampionListDto} from '../../domain/index';
 import {LeagueUrl, UrlBuilder} from '../../helpers/UrlBuilder';
 import {BaseService} from './BaseService';
 
@@ -10,7 +9,7 @@ export class ChampionService extends BaseService {
             `lol/platform/v3/champions`,
             this.apiKey,
             this.getRegionCode(regionCode));
-        return axios
+        return this
             .get(url)
             .then((response) => {
                 return response.data;
@@ -26,7 +25,7 @@ export class ChampionService extends BaseService {
             `lol/platform/v3/champions/${championId}`,
             this.apiKey,
             this.getRegionCode(regionCode));
-        return axios
+        return this
             .get(url)
             .then((response) => {
                 return response.data;

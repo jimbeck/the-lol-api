@@ -1,7 +1,6 @@
-import axios from 'axios';
-import {BaseService} from './BaseService';
-import {LeagueUrl, UrlBuilder} from '../../helpers/UrlBuilder';
 import {LobbyEventDTOWrapper, TournamentCodeDTO} from '../../domain/index';
+import {LeagueUrl, UrlBuilder} from '../../helpers/UrlBuilder';
+import {BaseService} from './BaseService';
 
 export class TournamentService extends BaseService {
     public createTournamentCode(regionCode?: string): Promise<string[]> {
@@ -10,7 +9,7 @@ export class TournamentService extends BaseService {
             `lol/tournament/v3/codes`,
             this.apiKey,
             this.getRegionCode(regionCode));
-        return axios
+        return this
             .post(url)
             .then((response) => {
                 return response.data;
@@ -26,7 +25,7 @@ export class TournamentService extends BaseService {
             `lol/tournament/v3/codes/${tournamentCode}`,
             this.apiKey,
             this.getRegionCode(regionCode));
-        return axios
+        return this
             .post(url)
             .then((response) => {
                 return response.data;
@@ -42,7 +41,7 @@ export class TournamentService extends BaseService {
             `lol/tournament/v3/codes/${tournamentCode}`,
             this.apiKey,
             this.getRegionCode(regionCode));
-        return axios
+        return this
             .post(url)
             .then((response) => {
                 return response.data;
@@ -58,7 +57,7 @@ export class TournamentService extends BaseService {
             `/lol/tournament/v3/lobby-events/by-code/${tournamentCode}`,
             this.apiKey,
             this.getRegionCode(regionCode));
-        return axios
+        return this
             .get(url)
             .then((response) => {
                 return response.data;
@@ -74,7 +73,7 @@ export class TournamentService extends BaseService {
             `lol/tournament-stub/v3/providers`,
             this.apiKey,
             this.getRegionCode(regionCode));
-        return axios
+        return this
             .post(url)
             .then((response) => {
                 return response.data;
@@ -90,7 +89,7 @@ export class TournamentService extends BaseService {
             `lol/tournament-stub/v3/tournaments`,
             this.apiKey,
             this.getRegionCode(regionCode));
-        return axios
+        return this
             .post(url)
             .then((response) => {
                 return response.data;

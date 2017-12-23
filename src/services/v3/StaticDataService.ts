@@ -1,4 +1,3 @@
-import axios from 'axios';
 import {
     ChampionListDto,
     ItemDto,
@@ -11,8 +10,7 @@ import {
     RealmDto,
     RuneDto,
     SummonerSpellDto,
-    SummonerSpellListDto
-} from '../../domain/index';
+    SummonerSpellListDto } from '../../domain/index';
 import {LeagueUrl, UrlBuilder} from '../../helpers/UrlBuilder';
 import {BaseService} from './BaseService';
 
@@ -23,7 +21,7 @@ export class StaticDataService extends BaseService {
             `lol/static-data/v3/champions`,
             this.apiKey,
             this.getRegionCode(regionCode));
-        return axios
+        return this
             .get(url)
             .then((response) => {
                 return response.data;
@@ -39,7 +37,7 @@ export class StaticDataService extends BaseService {
             `lol/static-data/v3/champions/${championId}`,
             this.apiKey,
             this.getRegionCode(regionCode));
-        return axios
+        return this
             .get(url)
             .then((response) => {
                 return response.data;
@@ -55,7 +53,7 @@ export class StaticDataService extends BaseService {
             `lol/static-data/v3/items`,
             this.apiKey,
             this.getRegionCode(regionCode));
-        return axios
+        return this
             .get(url)
             .then((response) => {
                 return response.data;
@@ -71,7 +69,7 @@ export class StaticDataService extends BaseService {
             `lol/static-data/v3/items/${itemId}`,
             this.apiKey,
             this.getRegionCode(regionCode));
-        return axios
+        return this
             .get(url)
             .then((response) => {
                 return response.data;
@@ -88,7 +86,7 @@ export class StaticDataService extends BaseService {
             `lol/static-data/v3/language-strings`,
             this.apiKey,
             this.getRegionCode(regionCode));
-        return axios
+        return this
             .get(url)
             .then((response) => {
                 return response.data;
@@ -104,7 +102,7 @@ export class StaticDataService extends BaseService {
             `lol/static-data/v3/languages`,
             this.apiKey,
             this.getRegionCode(regionCode));
-        return axios
+        return this
             .get(url)
             .then((response) => {
                 return response.data;
@@ -120,7 +118,7 @@ export class StaticDataService extends BaseService {
             `lol/static-data/v3/maps`,
             this.apiKey,
             this.getRegionCode(regionCode));
-        return axios
+        return this
             .get(url)
             .then((response) => {
                 return response.data;
@@ -130,13 +128,14 @@ export class StaticDataService extends BaseService {
             });
     }
 
-    public getMasteries(locale?: string, version?: string, tags?: Set<string>, regionCode?: string): Promise<MasteryListDto> {
+    public getMasteries(locale?: string, version?: string,
+                        tags?: Set<string>, regionCode?: string): Promise<MasteryListDto> {
         const url = UrlBuilder.buildUrl(
             LeagueUrl.SERVICE,
             `lol/static-data/v3/masteries`,
             this.apiKey,
             this.getRegionCode(regionCode));
-        return axios
+        return this
             .get(url)
             .then((response) => {
                 return response.data;
@@ -146,13 +145,14 @@ export class StaticDataService extends BaseService {
             });
     }
 
-    public getMastery(masteryId: string, locale?: string, version?: string, tags?: Set<string>, regionCode?: string): Promise<MasteryDto> {
+    public getMastery(masteryId: string, locale?: string, version?: string,
+                      tags?: Set<string>, regionCode?: string): Promise<MasteryDto> {
         const url = UrlBuilder.buildUrl(
             LeagueUrl.SERVICE,
             `lol/static-data/v3/masteries/${masteryId}`,
             this.apiKey,
             this.getRegionCode(regionCode));
-        return axios
+        return this
             .get(url)
             .then((response) => {
                 return response.data;
@@ -162,13 +162,14 @@ export class StaticDataService extends BaseService {
             });
     }
 
-    public getProfileIcons(locale?: string, version?: string, tags?: Set<string>, regionCode?: string): Promise<ProfileIconDataDto> {
+    public getProfileIcons(locale?: string, version?: string,
+                           tags?: Set<string>, regionCode?: string): Promise<ProfileIconDataDto> {
         const url = UrlBuilder.buildUrl(
             LeagueUrl.SERVICE,
             `lol/static-data/v3/profile-icons`,
             this.apiKey,
             this.getRegionCode(regionCode));
-        return axios
+        return this
             .get(url)
             .then((response) => {
                 return response.data;
@@ -184,7 +185,7 @@ export class StaticDataService extends BaseService {
             `lol/static-data/v3/realms`,
             this.apiKey,
             this.getRegionCode(regionCode));
-        return axios
+        return this
             .get(url)
             .then((response) => {
                 return response.data;
@@ -194,13 +195,14 @@ export class StaticDataService extends BaseService {
             });
     }
 
-    public getRune(runeId: string, locale?: string, version?: string, tags?: Set<string>, regionCode?: string): Promise<RuneDto> {
+    public getRune(runeId: string, locale?: string, version?: string,
+                   tags?: Set<string>, regionCode?: string): Promise<RuneDto> {
         const url = UrlBuilder.buildUrl(
             LeagueUrl.SERVICE,
             `lol/static-data/v3/runes/${runeId}`,
             this.apiKey,
             this.getRegionCode(regionCode));
-        return axios
+        return this
             .get(url)
             .then((response) => {
                 return response.data;
@@ -210,13 +212,14 @@ export class StaticDataService extends BaseService {
             });
     }
 
-    public getSummonerSpells(locale?: string, version?: string, tags?: Set<string>, regionCode?: string): Promise<SummonerSpellListDto> {
+    public getSummonerSpells(locale?: string, version?: string,
+                             tags?: Set<string>, regionCode?: string): Promise<SummonerSpellListDto> {
         const url = UrlBuilder.buildUrl(
             LeagueUrl.SERVICE,
             `lol/static-data/v3/summoner-spells`,
             this.apiKey,
             this.getRegionCode(regionCode));
-        return axios
+        return this
             .get(url)
             .then((response) => {
                 return response.data;
@@ -226,13 +229,14 @@ export class StaticDataService extends BaseService {
             });
     }
 
-    public getSummonerSpell(summonerSpellId: string, locale?: string, version?: string, tags?: Set<string>, regionCode?: string): Promise<SummonerSpellDto> {
+    public getSummonerSpell(summonerSpellId: string, locale?: string,
+                            version?: string, tags?: Set<string>, regionCode?: string): Promise<SummonerSpellDto> {
         const url = UrlBuilder.buildUrl(
             LeagueUrl.SERVICE,
             `lol/static-data/v3/summoner-spells/${summonerSpellId}`,
             this.apiKey,
             this.getRegionCode(regionCode));
-        return axios
+        return this
             .get(url)
             .then((response) => {
                 return response.data;
@@ -248,7 +252,7 @@ export class StaticDataService extends BaseService {
             `lol/static-data/v3/versions`,
             this.apiKey,
             this.getRegionCode(regionCode));
-        return axios
+        return this
             .get(url)
             .then((response) => {
                 return response.data;

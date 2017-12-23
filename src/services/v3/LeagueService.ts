@@ -28,7 +28,7 @@ export class LeagueService extends BaseService {
             `lol/league/v3/leagues/by-summoner/${summonerId}`,
             this.apiKey,
             this.getRegionCode(regionCode));
-        return axios
+        return this
             .get(url)
             .then((response) => {
                 return response.data;
@@ -44,7 +44,7 @@ export class LeagueService extends BaseService {
             `lol/league/v3/leagues/${leagueId}`,
             this.apiKey,
             this.getRegionCode(regionCode));
-        return axios
+        return this
             .get(url)
             .then((response) => {
                 return response.data;
@@ -61,7 +61,7 @@ export class LeagueService extends BaseService {
             `lol/league/v3/masterleagues/by-queue/${queue}`,
             this.apiKey,
             this.getRegionCode(regionCode));
-        return axios
+        return this
             .get(url)
             .then((response) => {
                 return response.data;
@@ -77,7 +77,7 @@ export class LeagueService extends BaseService {
             `lol/league/v3/positions/by-summoner/${summonerId}`,
             this.apiKey,
             this.getRegionCode(regionCode));
-        return axios
+        return this
             .get(url)
             .then((response) => {
                 return response.data;

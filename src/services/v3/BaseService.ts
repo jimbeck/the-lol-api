@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 export class BaseService {
     protected apiKey: string;
     private defaultRegionCode: string;
@@ -12,5 +14,17 @@ export class BaseService {
             return regionCode;
         }
         return this.defaultRegionCode;
+    }
+
+    public get(url) {
+        return axios.get(url);
+    }
+
+    public post(url) {
+        return axios.post(url);
+    }
+
+    public put(url) {
+        return axios.put(url);
     }
 }

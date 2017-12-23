@@ -1,4 +1,3 @@
-import axios from 'axios';
 import {ChampionMasteryDTO} from '../../domain/index';
 import {LeagueUrl, UrlBuilder} from '../../helpers/UrlBuilder';
 import {BaseService} from './BaseService';
@@ -10,8 +9,7 @@ export class ChampionMasteryService extends BaseService {
             `lol/champion-mastery/v3/champion-masteries/by-summoner/${summonerId}`,
             this.apiKey,
             this.getRegionCode(regionCode));
-        return axios
-            .get(url)
+        return this.get(url)
             .then((response) => {
                 return response.data;
             })
@@ -27,8 +25,7 @@ export class ChampionMasteryService extends BaseService {
             `lol/champion-mastery/v3/champion-masteries/by-summoner/${summonerId}/by-champion/${championId}`,
             this.apiKey,
             this.getRegionCode(regionCode));
-        return axios
-            .get(url)
+        return this.get(url)
             .then((response) => {
                 return response.data;
             })
@@ -43,8 +40,7 @@ export class ChampionMasteryService extends BaseService {
             `lol/champion-mastery/v3/scores/by-summoner/${summonerId}`,
             this.apiKey,
             this.getRegionCode(regionCode));
-        return axios
-            .get(url)
+        return this.get(url)
             .then((response) => {
                 return response.data;
             })

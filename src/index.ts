@@ -3,6 +3,7 @@ import {ChampionMasteryService} from './services/v3/ChampionMasteryService';
 import {ChampionService} from './services/v3/ChampionService';
 import {LeagueService} from './services/v3/LeagueService';
 
+import {MatchService} from './services/v3/MatchService';
 import {SpectactorService} from './services/v3/SpectatorService';
 import {StaticDataService} from './services/v3/StaticDataService';
 import {StatusService} from './services/v3/StatusService';
@@ -10,7 +11,6 @@ import {SummonerService} from './services/v3/SummonerService';
 import {ThirdPartyService} from './services/v3/ThirdPartyService';
 import {TournamentService} from './services/v3/TournamentService';
 import {TournamentStubService} from './services/v3/TournamentStubService';
-import {MatchService} from './services/v3/MatchService';
 
 export class LolApi {
     public championMastery: ChampionMasteryService;

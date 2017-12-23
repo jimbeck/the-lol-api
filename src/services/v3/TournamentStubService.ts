@@ -1,7 +1,6 @@
-import axios from 'axios';
-import {BaseService} from './BaseService';
-import {LeagueUrl, UrlBuilder} from '../../helpers/UrlBuilder';
 import {LobbyEventDTOWrapper} from '../../domain/index';
+import {LeagueUrl, UrlBuilder} from '../../helpers/UrlBuilder';
+import {BaseService} from './BaseService';
 
 // TODO - handle query adn body params
 export class TournamentStubService extends BaseService {
@@ -11,7 +10,7 @@ export class TournamentStubService extends BaseService {
             `lol/tournament-stub/v3/codes`,
             this.apiKey,
             this.getRegionCode(regionCode));
-        return axios
+        return this
             .post(url)
             .then((response) => {
                 return response.data;
@@ -28,7 +27,7 @@ export class TournamentStubService extends BaseService {
             `/lol/tournament-stub/v3/lobby-events/by-code/${tournamentCode}`,
             this.apiKey,
             this.getRegionCode(regionCode));
-        return axios
+        return this
             .get(url)
             .then((response) => {
                 return response.data;
@@ -44,7 +43,7 @@ export class TournamentStubService extends BaseService {
             `lol/tournament-stub/v3/providers`,
             this.apiKey,
             this.getRegionCode(regionCode));
-        return axios
+        return this
             .post(url)
             .then((response) => {
                 return response.data;
@@ -60,7 +59,7 @@ export class TournamentStubService extends BaseService {
             `lol/tournament-stub/v3/tournaments`,
             this.apiKey,
             this.getRegionCode(regionCode));
-        return axios
+        return this
             .post(url)
             .then((response) => {
                 return response.data;

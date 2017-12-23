@@ -1,8 +1,4 @@
-import axios from 'axios';
-import {
-    ChampionListDto, ItemDto, ItemListDto, LanguageStringsDto, MapDataDto, MasteryDto,
-    MasteryListDto, ProfileIconDataDto, RealmDto, RuneDto, RuneListDto, ShardStatus
-} from '../../domain/index';
+import {ShardStatus} from '../../domain/index';
 import {LeagueUrl, UrlBuilder} from '../../helpers/UrlBuilder';
 import {BaseService} from './BaseService';
 
@@ -13,7 +9,7 @@ export class StatusService extends BaseService {
             `lol/status/v3/shard-data`,
             this.apiKey,
             this.getRegionCode(regionCode));
-        return axios
+        return this
             .get(url)
             .then((response) => {
                 return response.data;

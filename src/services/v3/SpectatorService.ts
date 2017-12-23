@@ -1,4 +1,3 @@
-import axios from 'axios';
 import {MatchDto} from '../../domain/index';
 import {LeagueUrl, UrlBuilder} from '../../helpers/UrlBuilder';
 import {BaseService} from './BaseService';
@@ -10,7 +9,7 @@ export class SpectactorService extends BaseService {
             `lol/spectator/v3/active-games/by-summoner/${summonerId}`,
             this.apiKey,
             this.getRegionCode(regionCode));
-        return axios
+        return this
             .get(url)
             .then((response) => {
                 return response.data;
@@ -26,7 +25,7 @@ export class SpectactorService extends BaseService {
             `lol/spectator/v3/featured-games`,
             this.apiKey,
             this.getRegionCode(regionCode));
-        return axios
+        return this
             .get(url)
             .then((response) => {
                 return response.data;
