@@ -16,8 +16,11 @@ export class BaseService {
         return this.defaultRegionCode;
     }
 
-    public get(url) {
-        return axios.get(url);
+    public get(url, isStatic: boolean = false) {
+        return axios.get(url)
+            .then((response) => {
+                return response;
+            });
     }
 
     public post(url) {

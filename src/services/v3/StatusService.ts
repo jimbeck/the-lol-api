@@ -10,7 +10,7 @@ export class StatusService extends BaseService {
             this.apiKey,
             this.getRegionCode(regionCode));
         return this
-            .get(url)
+            .get(url, true)
             .then((response) => {
                 return response.data;
             })

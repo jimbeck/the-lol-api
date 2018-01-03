@@ -18,12 +18,12 @@ export class LolApi {
     public league: LeagueService;
     public staticData: StaticDataService;
     public status: StatusService;
-    public match: MatchService;
+    public match: MatchService; // TODO - finish query params and validate the calls work
     public spectactor: SpectactorService;
     public summoner: SummonerService;
     public thirdPartyCode: ThirdPartyService;
-    private tournamentStub: TournamentStubService;
-    private tournament: TournamentService;
+    public tournamentStub: TournamentStubService; // TODO - finish query params and validate the calls work
+    public tournament: TournamentService; // TODO - finish query params and validate the calls work
 
     constructor(apiKey: string, region?: string) {
         if (!apiKey) {
