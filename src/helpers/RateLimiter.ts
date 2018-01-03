@@ -6,7 +6,7 @@ export class RateLimiter {
     private xAppRateLimitCount = 'x-app-rate-limit-count';
     private xMethodRateLimitCount = 'x-method-rate-limit-count';
 
-    public checkLimits(headers: object) {
+    public checkLimits(headers: {[key: string]: string}) {
         this.checkLimit(headers[this.xAppRateLimit], headers[this.xAppRateLimitCount]);
         this.checkLimit(headers[this.xMethodRateLimit], headers[this.xMethodRateLimitCount]);
     }
@@ -17,7 +17,7 @@ export class RateLimiter {
             const appRateLimitCountArray: string[] = this.extractLimitArray(rateLimitCount);
 
             for (let i = 0; i < appRateLimitArray.length; i++) {
-                console.log(this.compareRates(appRateLimitArray[i], appRateLimitCountArray[i]));
+                this.compareRates(appRateLimitArray[i], appRateLimitCountArray[i]);
             }
         }
     }

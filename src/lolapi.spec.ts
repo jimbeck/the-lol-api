@@ -1,5 +1,5 @@
 import {NoApiKeyError} from './errors';
-import {LolApi} from './index';
+import {LolApi} from './lolapi';
 
 describe('LeagueAPI', () => {
     it('throws error if no api key provided', () => {

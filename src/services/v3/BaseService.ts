@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios, {AxiosPromise, AxiosResponse} from 'axios';
 
 export class BaseService {
     protected apiKey: string;

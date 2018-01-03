@@ -203,12 +203,12 @@ export interface ChampionSpellDto {
     image: ImageDto;
     sanitizedDescription: string;
     sanitizedTooltip: string;
-    effect: object[];    // This field is a List of List of Double.
+    effect: number[][];    // This field is a List of List of Double.
     tooltip: string;
     maxrank: number;
     costBurn: string;
     rangeBurn: string;
-    range: object;	/* This field is either a List of Integer
+    range: number[] | string;	/* This field is either a List of Integer
                     or the String 'self' for spells that target one's own champion.
                     */
     cooldown: number[];
@@ -515,7 +515,7 @@ export interface SummonerSpellDto {
     maxrank: number;
     rangeBurn: string;
     description: string;
-    effect: object[];	// This field is a List of List of Double.
+    effect: number[][];	// This field is a List of List of Double.
     key: string;
     leveltip: LevelTipDto;
     modes: string[];
@@ -524,7 +524,7 @@ export interface SummonerSpellDto {
     costType: string;
     sanitizedDescription: string;
     sanitizedTooltip: string;
-    range: object;	/*
+    range: number[] | string;	/*
                     This field is either a List of Integers or the String
                     'self' for spells that target one's own champion.
                     */
