@@ -43,4 +43,4 @@ export class LolApi {
     }
 }
 
-module.exports = LolApi;
+module.exports.LolApi;
