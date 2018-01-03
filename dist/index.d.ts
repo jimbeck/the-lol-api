@@ -1,1 +1,0 @@
-export { LolApi } from './lolapi';

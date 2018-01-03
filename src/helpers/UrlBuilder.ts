@@ -1,6 +1,6 @@
 import * as _ from 'lodash';
+import {proxies} from '../constants/proxies';
 import {InvalidRegionError} from '../errors';
-const proxies = require('../constants/proxies.json');
 const serviceProxies = proxies.serviceProxies;
 const regionalProxies = proxies.regionalProxies;
 

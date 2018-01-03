@@ -17,6 +17,7 @@
   "dependencies": {
     "axios": "^0.17.1",
     "axios-mock-adapter": "^1.10.0",
+    "json-loader": "^0.5.7",
     "limit": "^0.0.1",
     "lodash": "^4.17.4",
     "nodemon": "^1.13.3",
@@ -38,7 +39,9 @@
       "^.+\\.tsx?$": "ts-jest"
     },
     "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
-    "testPathIgnorePatterns": ["<rootDir>/dist/"],
+    "testPathIgnorePatterns": [
+      "<rootDir>/dist/"
+    ],
     "moduleFileExtensions": [
       "ts",
       "tsx",

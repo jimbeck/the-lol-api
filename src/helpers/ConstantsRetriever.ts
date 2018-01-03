@@ -1,13 +1,13 @@
 import * as _ from 'lodash';
+import {gameModes} from '../constants/gameModes';
+import {gameTypes} from '../constants/gameTypes';
+import {mapNames} from '../constants/mapNames';
+import {matchmakingQueues} from '../constants/matchmakingQueues';
+import {seasons} from '../constants/seasons';
 import {
     InvalidGameModeError, InvalidGameTypeError, InvalidMapIdError, InvalidMatchingQueueIdError,
     InvalidSeasonIdError,
 } from '../errors';
-const gameModes = require('../constants/gameModes.json');
-const gameTypes = require('../constants/gameTypes.json');
-const mapNames = require('../constants/mapNames.json');
-const matchmakingQueues = require('../constants/matchmakingQueues.json');
-const seasons = require('../constants/seasons.json');
 
 export class ConstantsRetriever {
     public static retrieveGameModeByName(name: string): string {
