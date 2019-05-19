@@ -1,21 +1,22 @@
 import {
-    ChampionListDto,
-    ItemDto,
-    ItemListDto,
-    LanguageStringsDto,
-    MapDataDto,
+    // ChampionListDto,
+    // ItemDto,
+    // ItemListDto,
+    // LanguageStringsDto,
+    // MapDataDto,
     MasteryDto,
-    MasteryListDto,
-    ProfileIconDataDto,
-    RealmDto,
+    // MasteryListDto,
+    // ProfileIconDataDto,
+    // RealmDto,
     RuneDto,
-    SummonerSpellDto,
-    SummonerSpellListDto } from '../../domain/index';
-import {LeagueUrl, UrlBuilder} from '../../helpers/UrlBuilder';
+    // SummonerSpellDto,
+    // SummonerSpellListDto
+} from '../domain';
+import {LeagueUrl, UrlBuilder} from '../helpers/UrlBuilder';
 import {BaseService} from './BaseService';
 
 export class StaticDataService extends BaseService {
-    public getChampions(regionCode?: string): Promise<ChampionListDto> {
+    public getChampions(regionCode?: string) {
         const url = UrlBuilder.buildUrl(
             LeagueUrl.SERVICE,
             `lol/static-data/v3/champions`,
@@ -31,7 +32,7 @@ export class StaticDataService extends BaseService {
             });
     }
 
-    public getChampion(championId: string, regionCode?: string): Promise<ChampionListDto> {
+    public getChampion(championId: string, regionCode?: string) {
         const url = UrlBuilder.buildUrl(
             LeagueUrl.SERVICE,
             `lol/static-data/v3/champions/${championId}`,
@@ -47,7 +48,7 @@ export class StaticDataService extends BaseService {
             });
     }
 
-    public getItems(regionCode?: string): Promise<ItemListDto> {
+    public getItems(regionCode?: string) {
         const url = UrlBuilder.buildUrl(
             LeagueUrl.SERVICE,
             `lol/static-data/v3/items`,
@@ -63,7 +64,7 @@ export class StaticDataService extends BaseService {
             });
     }
 
-    public getItem(itemId: string, regionCode?: string): Promise<ItemDto> {
+    public getItem(itemId: string, regionCode?: string) {
         const url = UrlBuilder.buildUrl(
             LeagueUrl.SERVICE,
             `lol/static-data/v3/items/${itemId}`,
@@ -80,7 +81,7 @@ export class StaticDataService extends BaseService {
     }
 
     // TODO enum for locale and add patch verison. and add them as params
-    public getLanguageString(locale?: string, patchVersion?: string, regionCode?: string): Promise<LanguageStringsDto> {
+    public getLanguageString(locale?: string, patchVersion?: string, regionCode?: string) {
         const url = UrlBuilder.buildUrl(
             LeagueUrl.SERVICE,
             `lol/static-data/v3/language-strings`,
@@ -112,7 +113,7 @@ export class StaticDataService extends BaseService {
             });
     }
 
-    public getMaps(locale?: string, version?: string, regionCode?: string): Promise<MapDataDto> {
+    public getMaps(locale?: string, version?: string, regionCode?: string) {
         const url = UrlBuilder.buildUrl(
             LeagueUrl.SERVICE,
             `lol/static-data/v3/maps`,
@@ -129,7 +130,7 @@ export class StaticDataService extends BaseService {
     }
 
     public getMasteries(locale?: string, version?: string,
-                        tags?: Set<string>, regionCode?: string): Promise<MasteryListDto> {
+                        tags?: Set<string>, regionCode?: string) {
         const url = UrlBuilder.buildUrl(
             LeagueUrl.SERVICE,
             `lol/static-data/v3/masteries`,
@@ -163,7 +164,7 @@ export class StaticDataService extends BaseService {
     }
 
     public getProfileIcons(locale?: string, version?: string,
-                           tags?: Set<string>, regionCode?: string): Promise<ProfileIconDataDto> {
+                           tags?: Set<string>, regionCode?: string) {
         const url = UrlBuilder.buildUrl(
             LeagueUrl.SERVICE,
             `lol/static-data/v3/profile-icons`,
@@ -179,7 +180,7 @@ export class StaticDataService extends BaseService {
             });
     }
 
-    public getRealms(locale?: string, version?: string, tags?: Set<string>, regionCode?: string): Promise<RealmDto> {
+    public getRealms(locale?: string, version?: string, tags?: Set<string>, regionCode?: string) {
         const url = UrlBuilder.buildUrl(
             LeagueUrl.SERVICE,
             `lol/static-data/v3/realms`,
@@ -213,7 +214,7 @@ export class StaticDataService extends BaseService {
     }
 
     public getSummonerSpells(locale?: string, version?: string,
-                             tags?: Set<string>, regionCode?: string): Promise<SummonerSpellListDto> {
+                             tags?: Set<string>, regionCode?: string) {
         const url = UrlBuilder.buildUrl(
             LeagueUrl.SERVICE,
             `lol/static-data/v3/summoner-spells`,
@@ -230,7 +231,7 @@ export class StaticDataService extends BaseService {
     }
 
     public getSummonerSpell(summonerSpellId: string, locale?: string,
-                            version?: string, tags?: Set<string>, regionCode?: string): Promise<SummonerSpellDto> {
+                            version?: string, tags?: Set<string>, regionCode?: string) {
         const url = UrlBuilder.buildUrl(
             LeagueUrl.SERVICE,
             `lol/static-data/v3/summoner-spells/${summonerSpellId}`,

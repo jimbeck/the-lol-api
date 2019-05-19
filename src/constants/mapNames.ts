@@ -1,50 +1,73 @@
-export const mapNames = {
-  1: {
-    name: 'Summoner\'s Rift',
-    notes: 'Original Summer Variant',
+// These constants populate the mapId field.
+export const mapNames = [
+  {
+    "mapid": 1,
+    "name": "Summoner's Rift",
+    "notes": "Original Summer variant"
   },
-  2: {
-    name: 'Summoner\'s Rift',
-    notes: 'Original Autumn Variant',
+  {
+    "mapid": 2,
+    "name": "Summoner's Rift",
+    "notes": "Original Autumn variant"
   },
-  3: {
-    name: 'The Proving Grounds',
-    notes: 'Tutorial Map',
+  {
+    "mapid": 3,
+    "name": "The Proving Grounds",
+    "notes": "Tutorial map"
   },
-  4: {
-    name: 'Twisted Treeline',
-    notes: 'Original Version',
+  {
+    "mapid": 4,
+    "name": "Twisted Treeline",
+    "notes": "Original version"
   },
-  8: {
-    name: 'The Crystal Scar',
-    notes: 'Dominion Map',
+  {
+    "mapid": 8,
+    "name": "The Crystal Scar",
+    "notes": "Dominion map"
   },
-  10: {
-    name: 'Twisted Treeline',
-    notes: 'Current Version',
+  {
+    "mapid": 10,
+    "name": "Twisted Treeline",
+    "notes": "Current version"
   },
-  11: {
-    name: 'Summoner\'s Rift',
-    notes: 'Current Version',
+  {
+    "mapid": 11,
+    "name": "Summoner's Rift",
+    "notes": "Current version"
   },
-  12: {
-    name: 'Howling Abyss',
-    notes: 'ARAM Map',
+  {
+    "mapid": 12,
+    "name": "Howling Abyss",
+    "notes": "ARAM map"
   },
-  14: {
-    name: 'Butcher\'s Bridge',
-    notes: 'ARAM Map',
+  {
+    "mapid": 14,
+    "name": "Butcher's Bridge",
+    "notes": "ARAM map"
   },
-  16: {
-    name: 'Cosmic Ruins',
-    notes: 'Dark Star: Singularity Map',
+  {
+    "mapid": 16,
+    "name": "Cosmic Ruins",
+    "notes": "Dark Star: Singularity map"
   },
-  18: {
-    name: 'Valoran City Park',
-    notes: 'Star Guardian Invasion Map',
+  {
+    "mapid": 18,
+    "name": "Valoran City Park",
+    "notes": "Star Guardian Invasion map"
   },
-  19: {
-    name: 'Substructure 43',
-    notes: 'PROJECT: Hunters Map',
+  {
+    "mapid": 19,
+    "name": "Substructure 43",
+    "notes": "PROJECT: Hunters map"
   },
-};
+  {
+    "mapid": 20,
+    "name": "Crash Site",
+    "notes": "Odyssey: Extraction map"
+  },
+  {
+    "mapid": 21,
+    "name": "Nexus Blitz",
+    "notes": "Nexus Blitz map"
+  }
+];

@@ -1,60 +1,14 @@
-import {LobbyEventDTOWrapper, TournamentCodeDTO} from '../../domain/index';
-import {LeagueUrl, UrlBuilder} from '../../helpers/UrlBuilder';
-import {BaseService} from './BaseService';
+import { MatchDto, MatchlistDto } from '../domain';
+import { LeagueUrl, UrlBuilder } from '../helpers/UrlBuilder';
+import { BaseService } from './BaseService';
 
-export class TournamentService extends BaseService {
-    public createTournamentCode(regionCode?: string): Promise<string[]> {
+export class MatchService extends BaseService {
+    private version = 'v4';
+
+    public getMatchById(matchId: string, regionCode?: string): Promise<MatchDto> {
         const url = UrlBuilder.buildUrl(
             LeagueUrl.SERVICE,
-            `lol/tournament/v3/codes`,
-            this.apiKey,
-            this.getRegionCode(regionCode));
-        return this
-            .post(url)
-            .then((response) => {
-                return response.data;
-            })
-            .catch((error) => {
-                return error;
-            });
-    }
-
-    public updateTournamentInformation(tournamentCode: string, regionCode?: string): Promise<void> {
-        const url = UrlBuilder.buildUrl(
-            LeagueUrl.SERVICE,
-            `lol/tournament/v3/codes/${tournamentCode}`,
-            this.apiKey,
-            this.getRegionCode(regionCode));
-        return this
-            .post(url)
-            .then((response) => {
-                return response.data;
-            })
-            .catch((error) => {
-                return error;
-            });
-    }
-
-    public getTournamentInformation(tournamentCode: string, regionCode?: string): Promise<TournamentCodeDTO> {
-        const url = UrlBuilder.buildUrl(
-            LeagueUrl.SERVICE,
-            `lol/tournament/v3/codes/${tournamentCode}`,
-            this.apiKey,
-            this.getRegionCode(regionCode));
-        return this
-            .post(url)
-            .then((response) => {
-                return response.data;
-            })
-            .catch((error) => {
-                return error;
-            });
-    }
-
-    public getLobbyEventsByTournamentCode(tournamentCode?: string, regionCode?: string): Promise<LobbyEventDTOWrapper> {
-        const url = UrlBuilder.buildUrl(
-            LeagueUrl.SERVICE,
-            `/lol/tournament/v3/lobby-events/by-code/${tournamentCode}`,
+            `lol/match/${this.version}/matches/${matchId}`,
             this.apiKey,
             this.getRegionCode(regionCode));
         return this
@@ -67,14 +21,14 @@ export class TournamentService extends BaseService {
             });
     }
 
-    public getTournamentProviders(regionCode?: string): Promise<number> {
+    public getMatchListByAccountId(encryptedAccountId: string, regionCode?: string): Promise<MatchlistDto> {
         const url = UrlBuilder.buildUrl(
             LeagueUrl.SERVICE,
-            `lol/tournament-stub/v3/providers`,
+            `/lol/match/${this.version}/matchlists/by-account/${encryptedAccountId}`,
             this.apiKey,
             this.getRegionCode(regionCode));
         return this
-            .post(url)
+            .get(url)
             .then((response) => {
                 return response.data;
             })
@@ -83,14 +37,47 @@ export class TournamentService extends BaseService {
             });
     }
 
-    public createTournament(regionCode?: string): Promise<number> {
+    public getMatchTimelineByMatchId(matchId: string, regionCode?: string): Promise<MatchlistDto> {
         const url = UrlBuilder.buildUrl(
             LeagueUrl.SERVICE,
-            `lol/tournament-stub/v3/tournaments`,
+            `/lol/match/${this.version}/timelines/by-match/${matchId}`,
             this.apiKey,
             this.getRegionCode(regionCode));
         return this
-            .post(url)
+            .get(url)
+            .then((response) => {
+                return response.data;
+            })
+            .catch((error) => {
+                return error;
+            });
+    }
+
+    public getMatchIdsByTournamentCode(tournamentCode: string, regionCode?: string): Promise<number[]> {
+        const url = UrlBuilder.buildUrl(
+            LeagueUrl.SERVICE,
+            `lol/match/${this.version}/matches/by-tournament-code/${tournamentCode}/ids`,
+            this.apiKey,
+            this.getRegionCode(regionCode));
+        return this
+            .get(url)
+            .then((response) => {
+                return response.data;
+            })
+            .catch((error) => {
+                return error;
+            });
+    }
+
+    public getMatchByMatchIdAndTournamentCode(matchId: string,
+                                              tournamentCode: string, regionCode?: string): Promise<MatchDto> {
+        const url = UrlBuilder.buildUrl(
+            LeagueUrl.SERVICE,
+            `lol/match/${this.version}/matches/${matchId}/by-tournament-code/${tournamentCode}`,
+            this.apiKey,
+            this.getRegionCode(regionCode));
+        return this
+            .get(url)
             .then((response) => {
                 return response.data;
             })

@@ -1,12 +1,14 @@
-import {ChampionListDto} from '../../domain/index';
-import {LeagueUrl, UrlBuilder} from '../../helpers/UrlBuilder';
+import {MatchDto} from '../domain';
+import {LeagueUrl, UrlBuilder} from '../helpers/UrlBuilder';
 import {BaseService} from './BaseService';
 
-export class ChampionService extends BaseService {
-    public getChampions(regionCode?: string): Promise<ChampionListDto> {
+export class SpectactorService extends BaseService {
+    private version = 'v4';
+
+    public getCurrentGameBySummoner(encryptedSummonerId: string, regionCode?: string): Promise<MatchDto> {
         const url = UrlBuilder.buildUrl(
             LeagueUrl.SERVICE,
-            `lol/platform/v3/champions`,
+            `lol/spectator/${this.version}/active-games/by-summoner/${encryptedSummonerId}`,
             this.apiKey,
             this.getRegionCode(regionCode));
         return this
@@ -19,10 +21,10 @@ export class ChampionService extends BaseService {
             });
     }
 
-    public getChampion(championId: string, regionCode?: string): Promise<ChampionListDto> {
+    public getFeaturedGames(regionCode?: string): Promise<MatchDto> {
         const url = UrlBuilder.buildUrl(
             LeagueUrl.SERVICE,
-            `lol/platform/v3/champions/${championId}`,
+            `lol/spectator/${this.version}/featured-games`,
             this.apiKey,
             this.getRegionCode(regionCode));
         return this

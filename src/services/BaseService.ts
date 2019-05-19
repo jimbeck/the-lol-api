@@ -1,4 +1,5 @@
 import axios, {AxiosPromise, AxiosResponse} from 'axios';
+import { NoRegionWasProvided } from '../errors';
 
 export class BaseService {
     protected apiKey: string;
@@ -10,6 +11,9 @@ export class BaseService {
     }
 
     public getRegionCode(regionCode?: string) {
+        if (!regionCode && !this.defaultRegionCode) {
+            throw new NoRegionWasProvided();
+        }
         if (regionCode) {
             return regionCode;
         }

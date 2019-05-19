@@ -1,14 +1,16 @@
 import axios from 'axios';
-import {LeagueListDTO, LeaguePositionDTO} from '../../domain/index';
-import {LeagueUrl, UrlBuilder} from '../../helpers/UrlBuilder';
-import {BaseService} from './BaseService';
+import { LeagueEntryDto, LeagueListDto, LeaguePositionDto } from '../domain';
+import { LeagueUrl, UrlBuilder } from '../helpers/UrlBuilder';
+import { BaseService } from './BaseService';
 
 export class LeagueService extends BaseService {
+    private version = 'v4';
+
     // TODO - make queue enum RANKED_SOLO_5X5, RANKED_FLEX_SR, RANKED_FLEX_TT
-    public getChallengerLeagueByQueue(queue: string, regionCode?: string): Promise<LeagueListDTO> {
+    public getChallengerLeagueByQueue(queue: string, regionCode?: string): Promise<LeagueListDto> {
         const url = UrlBuilder.buildUrl(
             LeagueUrl.SERVICE,
-            `lol/league/v3/challengerleagues/by-queue/${queue}`,
+            `lol/league/${this.version}/challengerleagues/by-queue/${queue}`,
             this.apiKey,
             this.getRegionCode(regionCode));
         return axios
@@ -21,11 +23,11 @@ export class LeagueService extends BaseService {
             });
     }
 
-    // @deprecated
-    public getLeagueForSummonerInAllQueues(summonerId: string, regionCode?: string): Promise<Set<LeagueListDTO>> {
+    public getLeagueForSummonerInAllQueues(encryptedSummonerId: string,
+                                           regionCode?: string): Promise<Set<LeagueEntryDto>> {
         const url = UrlBuilder.buildUrl(
             LeagueUrl.SERVICE,
-            `lol/league/v3/leagues/by-summoner/${summonerId}`,
+            `lol/league/${this.version}/leagues/by-summoner/${encryptedSummonerId}`,
             this.apiKey,
             this.getRegionCode(regionCode));
         return this
@@ -38,10 +40,27 @@ export class LeagueService extends BaseService {
             });
     }
 
-    public getLeagueByLeagueId(leagueId: string, regionCode?: string): Promise<LeagueListDTO> {
+    public getAllLeagueEntries(queue: string, tier: string, division: string,
+                               regionCode?: string): Promise<LeagueEntryDto> {
         const url = UrlBuilder.buildUrl(
             LeagueUrl.SERVICE,
-            `lol/league/v3/leagues/${leagueId}`,
+            `/lol/league/${this.version}/entries/${queue}/${tier}/${division}`,
+            this.apiKey,
+            this.getRegionCode(regionCode));
+        return this
+            .get(url)
+            .then((response) => {
+                return response.data;
+            })
+            .catch((error) => {
+                return error;
+            });
+    }
+
+    public getGrandMasterLeagueByQueue(queue: string, regionCode?: string): Promise<LeagueListDto> {
+        const url = UrlBuilder.buildUrl(
+            LeagueUrl.SERVICE,
+            `lol/league/${this.version}/grandmasterleagues/by-queue/${queue}`,
             this.apiKey,
             this.getRegionCode(regionCode));
         return this
@@ -55,10 +74,10 @@ export class LeagueService extends BaseService {
     }
 
     // TODO - make queue enum RANKED_SOLO_5X5, RANKED_FLEX_SR, RANKED_FLEX_TT
-    public getMasterLeagueByQueue(queue: string, regionCode?: string): Promise<LeagueListDTO> {
+    public getMasterLeagueByQueue(queue: string, regionCode?: string): Promise<LeagueListDto> {
         const url = UrlBuilder.buildUrl(
             LeagueUrl.SERVICE,
-            `lol/league/v3/masterleagues/by-queue/${queue}`,
+            `lol/league/${this.version}/masterleagues/by-queue/${queue}`,
             this.apiKey,
             this.getRegionCode(regionCode));
         return this
@@ -71,10 +90,10 @@ export class LeagueService extends BaseService {
             });
     }
 
-    public getAllLeaguePositionsForSummoner(summonerId: string, regionCode?: string): Promise<Set<LeaguePositionDTO>> {
+    public getLeagueById(leagueId: string, regionCode?: string): Promise<Set<LeagueListDto>> {
         const url = UrlBuilder.buildUrl(
             LeagueUrl.SERVICE,
-            `lol/league/v3/positions/by-summoner/${summonerId}`,
+            `/lol/league/${this.version}/leagues/${leagueId}`,
             this.apiKey,
             this.getRegionCode(regionCode));
         return this

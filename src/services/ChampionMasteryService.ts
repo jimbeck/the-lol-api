@@ -1,12 +1,14 @@
-import {ChampionMasteryDTO} from '../../domain/index';
-import {LeagueUrl, UrlBuilder} from '../../helpers/UrlBuilder';
-import {BaseService} from './BaseService';
+import { ChampionMasteryDto } from '../domain';
+import { LeagueUrl, UrlBuilder } from '../helpers/UrlBuilder';
+import { BaseService } from './BaseService';
 
 export class ChampionMasteryService extends BaseService {
-    public getChampionMasteries(summonerId: string, regionCode?: string): Promise<ChampionMasteryDTO[]> {
+    private version = 'v4';
+
+    public getChampionMasteries(encryptedSummonerId: string, regionCode?: string): Promise<ChampionMasteryDto[]> {
         const url = UrlBuilder.buildUrl(
             LeagueUrl.SERVICE,
-            `lol/champion-mastery/v3/champion-masteries/by-summoner/${summonerId}`,
+            `/lol/champion-mastery/${this.version}/champion-masteries/by-summoner/${encryptedSummonerId}`,
             this.apiKey,
             this.getRegionCode(regionCode));
         return this.get(url)
@@ -18,11 +20,11 @@ export class ChampionMasteryService extends BaseService {
             });
     }
 
-    public getChampionMastery(summonerId: string, championId: string,
-                              regionCode?: string): Promise<ChampionMasteryDTO> {
+    public getChampionMastery(encryptedSummonerId: string, championId: string,
+                              regionCode?: string): Promise<ChampionMasteryDto> {
         const url = UrlBuilder.buildUrl(
             LeagueUrl.SERVICE,
-            `lol/champion-mastery/v3/champion-masteries/by-summoner/${summonerId}/by-champion/${championId}`,
+            `/lol/champion-mastery/v4/champion-masteries/by-summoner/${encryptedSummonerId}/by-champion/${championId}`,
             this.apiKey,
             this.getRegionCode(regionCode));
         return this.get(url)
@@ -34,10 +36,10 @@ export class ChampionMasteryService extends BaseService {
             });
     }
 
-    public getTotalChampionMasteryScore(summonerId: string, regionCode?: string): Promise<number> {
+    public getTotalChampionMasteryScore(encryptedSummonerId: string, regionCode?: string): Promise<number> {
         const url = UrlBuilder.buildUrl(
             LeagueUrl.SERVICE,
-            `lol/champion-mastery/v3/scores/by-summoner/${summonerId}`,
+            `/lol/champion-mastery/v4/scores/by-summoner/${encryptedSummonerId}`,
             this.apiKey,
             this.getRegionCode(regionCode));
         return this.get(url)

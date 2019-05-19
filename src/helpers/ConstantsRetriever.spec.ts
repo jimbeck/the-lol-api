@@ -1,8 +1,10 @@
+
+import { gameModes, gameTypes, mapNames, matchmakingQueues, seasons } from '../constants';
 import {
     InvalidGameModeError, InvalidGameTypeError, InvalidMapIdError, InvalidMatchingQueueIdError,
     InvalidSeasonIdError,
 } from '../errors';
-import {ConstantsRetriever} from './ConstantsRetriever';
+import { ConstantsRetriever } from './ConstantsRetriever';
 
 describe('ConstantsRetriever', () => {
     describe('retrieveGameModeByName', () => {
@@ -12,7 +14,7 @@ describe('ConstantsRetriever', () => {
         });
         it('returns a valid game mode', () => {
             expect(ConstantsRetriever.retrieveGameModeByName('classic'))
-                .toEqual({description: 'Classic Summoner\'s Rift and Twisted Treeline games'});
+                .toEqual(gameModes.filter((x) => x.gamemode === 'CLASSIC')[0]);
         });
     });
 
@@ -23,44 +25,40 @@ describe('ConstantsRetriever', () => {
         });
         it('returns a valid game type', () => {
             expect(ConstantsRetriever.retrieveGameTypeByName('matched_game'))
-                .toEqual({description: 'All other games'});
+                .toEqual(gameTypes.filter((x) => x.GAMETYPE === 'MATCHED_GAME')[0]);
         });
     });
 
     describe('retrieveMapNameById', () => {
         it('throws error if invalid map id', () => {
-            expect(() => ConstantsRetriever.retrieveMapNameById('abc'))
+            expect(() => ConstantsRetriever.retrieveMapNameById(-1))
                 .toThrowError(InvalidMapIdError);
         });
         it('returns a valid map object', () => {
-            expect(ConstantsRetriever.retrieveMapNameById('1'))
-                .toEqual({name: 'Summoner\'s Rift', notes: 'Original Summer Variant'});
+            expect(ConstantsRetriever.retrieveMapNameById(1))
+                .toEqual(mapNames.filter((x) => x.mapid === 1)[0]);
         });
     });
 
     describe('retrieveMatchmakingQueueById', () => {
         it('throws error if invalid matchmaking queue', () => {
-            expect(() => ConstantsRetriever.retrieveMatchmakingQueueById('abc'))
+            expect(() => ConstantsRetriever.retrieveMatchmakingQueueById(-1))
                 .toThrowError(InvalidMatchingQueueIdError);
         });
         it('returns a valid matchmaking queue object', () => {
-            expect(ConstantsRetriever.retrieveMatchmakingQueueById('2'))
-                .toEqual({
-                    map: 'Summoner\'s Rift',
-                    description: '5v5 Blind Pick games',
-                    notes: 'Deprecated in patch 7.19 in favor of queueId 430',
-                });
+            expect(ConstantsRetriever.retrieveMatchmakingQueueById(2))
+                .toEqual(matchmakingQueues.filter((x) => x.id === 2)[0]);
         });
     });
 
     describe('retrieveSeasonById', () => {
         it('throws error if invalid season', () => {
-            expect(() => ConstantsRetriever.retrieveSeasonById('abc'))
+            expect(() => ConstantsRetriever.retrieveSeasonById(-1))
                 .toThrowError(InvalidSeasonIdError);
         });
         it('returns a valid season', () => {
-            expect(ConstantsRetriever.retrieveSeasonById('2'))
-                .toEqual('PRESEASON 2014');
+            expect(ConstantsRetriever.retrieveSeasonById(2))
+                .toEqual(seasons.filter((x) => x.id === 2)[0]);
         });
     });
 });

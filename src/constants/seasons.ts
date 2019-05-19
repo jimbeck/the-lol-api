@@ -1,12 +1,50 @@
-export const seasons = {
-  0: 'PRESEASON 3',
-  1: 'SEASON 3',
-  2: 'PRESEASON 2014',
-  3: 'SEASON 2014',
-  4: 'PRESEASON 2015',
-  5: 'SEASON 2015',
-  6: 'PRESEASON 2016',
-  7: 'SEASON 2016',
-  8: 'PRESEASON 2017',
-  9: 'SEASON 2017',
-};
+export const seasons = [
+  {
+    "id": 0,
+    "name": "PRESEASON 3"
+  },
+  {
+    "id": 1,
+    "name": "SEASON 3"
+  },
+  {
+    "id": 2,
+    "name": "PRESEASON 2014"
+  },
+  {
+    "id": 3,
+    "name": "SEASON 2014"
+  },
+  {
+    "id": 4,
+    "name": "PRESEASON 2015"
+  },
+  {
+    "id": 5,
+    "name": "SEASON 2015"
+  },
+  {
+    "id": 6,
+    "name": "PRESEASON 2016"
+  },
+  {
+    "id": 7,
+    "name": "SEASON 2016"
+  },
+  {
+    "id": 8,
+    "name": "PRESEASON 2017"
+  },
+  {
+    "id": 9,
+    "name": "SEASON 2017"
+  },
+  {
+    "id": 10,
+    "name": "PRESEASON 2018"
+  },
+  {
+    "id": 11,
+    "name": "SEASON 2018"
+  }
+];

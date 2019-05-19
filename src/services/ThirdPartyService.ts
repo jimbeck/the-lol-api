@@ -1,13 +1,13 @@
-import axios from 'axios';
-import {ShardStatus} from '../../domain/index';
-import {LeagueUrl, UrlBuilder} from '../../helpers/UrlBuilder';
+import {LeagueUrl, UrlBuilder} from '../helpers/UrlBuilder';
 import {BaseService} from './BaseService';
 
 export class ThirdPartyService extends BaseService {
-    public getThirdPartyCodeBySummonerId(summonerId: string, regionCode?: string): Promise<ShardStatus> {
+    private version = 'v4';
+
+    public getThirdPartyCodeBySummonerId(encryptedSummonerId: string, regionCode?: string): Promise<string> {
         const url = UrlBuilder.buildUrl(
             LeagueUrl.SERVICE,
-            `lol/platform/v3/third-party-code/by-summoner/${summonerId}`,
+            `lol/platform/${this.version}/third-party-code/by-summoner/${encryptedSummonerId}`,
             this.apiKey,
             this.getRegionCode(regionCode));
         return this
